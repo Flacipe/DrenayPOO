@@ -30,8 +30,10 @@ public class Mission {
 		this.nom = nom;
 	}
 
-	public void terminer(Brigade brigade) {
-		brigade.setMission(null);
+	public void terminer() {
+		for (Brigade brigade : ListeBrigade) {
+			brigade.setMission(null);
+		}
 	}
 
 }
