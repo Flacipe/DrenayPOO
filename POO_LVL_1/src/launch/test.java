@@ -81,14 +81,13 @@ public class test {
 							}
 						}
 					}
-				}
-
-				for (Brigade brigade : ListeBrigade) {
-					nom = in.nextLine();
-					if (brigade.getMission().equals(nom)) {
-						brigade.mission.terminer(brigade);
+				} else
+					for (Brigade brigade : ListeBrigade) {
+						nom = in.nextLine();
+						if (brigade.getMission().equals(nom)) {
+							brigade.mission.terminer();
+						}
 					}
-				}
 
 			}
 			for (Brigade brigade : ListeBrigade) {

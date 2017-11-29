@@ -7,7 +7,7 @@ public class Brigade {
 
 	private String nom;
 	public Mission mission;
-	static List<Poney> ListePoneys = new ArrayList();
+	public List<Poney> ListePoneys = new ArrayList();
 
 	public Brigade(String nom) {
 		super();
