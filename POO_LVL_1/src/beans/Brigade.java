@@ -1,9 +1,13 @@
 package beans;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Brigade {
 
 	private String nom;
 	public Mission mission;
+	static List<Poney> ListePoneys = new ArrayList();
 
 	public Brigade(String nom) {
 		super();
@@ -31,6 +35,7 @@ public class Brigade {
 			return false;
 		}
 		poney.setBrigade(this);
+		ListePoneys.add(poney);
 		return true;
 	}
 

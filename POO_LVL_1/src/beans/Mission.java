@@ -1,8 +1,12 @@
 package beans;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Mission {
 
 	private String nom;
+	static List<Brigade> ListeBrigade = new ArrayList();
 
 	public String getNom() {
 		return nom;
@@ -17,6 +21,7 @@ public class Mission {
 			return false;
 		}
 		brigade.setMission(this);
+		ListeBrigade.add(brigade);
 		return true;
 	}
 
