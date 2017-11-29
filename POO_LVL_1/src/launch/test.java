@@ -5,12 +5,14 @@ import java.util.List;
 import java.util.Scanner;
 
 import beans.Brigade;
+import beans.Mission;
 import beans.Poney;
 
 public class test {
 
 	static List<Poney> ListePoneys = new ArrayList();
 	static List<Brigade> ListeBrigade = new ArrayList();
+	static List<Mission> ListeMission = new ArrayList();
 
 	public static void main(String[] args) {
 		while (true) {
@@ -24,17 +26,13 @@ public class test {
 			s = in.nextLine();
 			System.out.println(s);
 			if (s.equals("p") || s.equals("P")) {
-				System.out.println("Entrez 'A' pour ajouter un poney, 'S' pour en supprimer un.");
+				System.out.println("Entrez 'A' pour ajouter un poney");
 				s = in.nextLine();
 				if (s.equalsIgnoreCase("a")) {
 					System.out.println("Pour ajouter un poney, merci d'entrer son Nom puis son grade.");
 					nom = in.nextLine();
 					grade = in.nextLine();
 					ListePoneys.add(new Poney(nom, grade));
-				} else if (s.equals("s") || s.equals("S")) {
-					System.out.println("Pour supprimer un poney, merci d'entrer son Nom.");
-					nom = in.nextLine();
-					ListePoneys.remove(nom);
 				}
 			} else if (s.equalsIgnoreCase("b")) {
 				System.out.println(
@@ -63,10 +61,30 @@ public class test {
 				}
 			}
 			if (s.equalsIgnoreCase("m")) {
-				System.out.println("Entrez le nom de la brigade ");
-				nom = in.nextLine();
+				System.out.println(
+						"Pour créer une mission, entrez a, pour affecter une brigade à une mission entrez n ou entrez autre chose pour finir une mission");
+				s = in.nextLine();
+				if (s.equalsIgnoreCase("a")) {
+					System.out.println("entrez le nom de la nouvelle mission");
+					nom = in.nextLine();
+					new Mission(nom);
+				} else if (s.equalsIgnoreCase("n")) {
+					System.out.println("Entrez le nom de la brigade, puis le nom de la mission à laquelle l'affecter");
+					String nombrigade = in.nextLine();
+					String nommission = in.nextLine();
+					for (Mission mission : ListeMission) {
+						if (mission.getNom().equalsIgnoreCase(nommission)) {
+							for (Brigade brigade : ListeBrigade) {
+								if (brigade.getNom().equalsIgnoreCase(nombrigade)) {
+									mission.affecter(brigade);
+								}
+							}
+						}
+					}
+				}
 
 				for (Brigade brigade : ListeBrigade) {
+					nom = in.nextLine();
 					if (brigade.getMission().equals(nom)) {
 						brigade.mission.terminer(brigade);
 					}
